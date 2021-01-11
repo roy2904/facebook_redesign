@@ -48,7 +48,7 @@ Widget makeStory({image, userimage, title}) {
   );
 }
 
-Widget makeFeed({userImage, userName, feedText, feedTime, feedImage}) {
+Widget makeFeed({userImage, userName, feedText, feedTime, feedImage, liked}) {
   return Container(
     margin: EdgeInsets.only(bottom: 40),
     child: Column(
@@ -109,16 +109,166 @@ Widget makeFeed({userImage, userName, feedText, feedTime, feedImage}) {
           ),
         ),
         SizedBox(height: 20),
+        feedImage!='' ?
         Container(
           height: 200,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
               image: AssetImage(feedImage),
+              fit: BoxFit.cover,
             ),
           ),
+        ) : Container(),
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                makeLike(),
+                Transform.translate(
+                  offset: Offset(-5, 0),
+                  child: makeLove(),
+                ),
+                Text(
+                  '2.5k',
+                  style: TextStyle(color: Colors.grey[800], fontSize: 15),
+                ),
+              ],
+            ),
+            Text(
+              '600 Comments',
+              style: TextStyle(color: Colors.grey[800], fontSize: 13),
+            ),
+          ],
+        ),
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            makeLikeButton(isActive: liked),
+            makeCommentButton(),
+            makeShareButton(),
+          ],
         ),
       ],
+    ),
+  );
+}
+
+Widget makeLike() {
+  return Container(
+    height: 30,
+    width: 30,
+    decoration: BoxDecoration(
+      color: Colors.blue,
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.white),
+    ),
+    child: Center(
+      child: Icon(
+        Icons.thumb_up,
+        color: Colors.white,
+        size: 14,
+      ),
+    ),
+  );
+}
+
+Widget makeLove() {
+  return Container(
+    height: 30,
+    width: 30,
+    decoration: BoxDecoration(
+      color: Colors.redAccent,
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.white),
+    ),
+    child: Center(
+      child: Icon(
+        Icons.favorite,
+        color: Colors.white,
+        size: 14,
+      ),
+    ),
+  );
+}
+
+Widget makeLikeButton({isActive}) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey[200]),
+      borderRadius: BorderRadius.circular(50),
+    ),
+    child: Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.thumb_up,
+            color: isActive ? Colors.blue : Colors.grey,
+          ),
+          SizedBox(width: 5),
+          Text(
+            'Like',
+            style: TextStyle(color: isActive ? Colors.blue : Colors.grey),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget makeCommentButton() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey[200]),
+      borderRadius: BorderRadius.circular(50),
+    ),
+    child: Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.comment,
+            color: Colors.grey,
+          ),
+          SizedBox(width: 5),
+          Text(
+            'Comment',
+            style: TextStyle(color:Colors.grey),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget makeShareButton() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey[200]),
+      borderRadius: BorderRadius.circular(50),
+    ),
+    child: Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.share,
+            color: Colors.grey,
+          ),
+          SizedBox(width: 5),
+          Text(
+            'Share',
+            style: TextStyle(color:Colors.grey),
+          ),
+        ],
+      ),
     ),
   );
 }

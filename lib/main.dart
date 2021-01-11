@@ -115,10 +115,38 @@ class _HomePageState extends State<HomePage> {
                     makeFeed(
                       userImage: 'assets/images/henri-meilhac.jpg',
                       userName: 'Henri Meilhac',
-                      feedTime: '1h ago',
+                      feedTime: '2m ago',
                       feedText:
                           'Success is not final, failure is not fatal: it is the courage to continue that counts.',
-                          feedImage: 'assets/images/Story/5.jpg'
+                      feedImage: 'assets/images/Story/5.jpg',
+                      liked: true,
+                    ),
+                     makeFeed(
+                      userImage: 'assets/images/sharon-garcia.jpg',
+                      userName: 'Sharon Garcia',
+                      feedTime: '28m ago',
+                      feedText:
+                          'What you get by achieving your goals is not as important as what you become by achieving your goals.',
+                      feedImage: '',
+                      liked: false,
+                    ),
+                     makeFeed(
+                      userImage: 'assets/images/charles-deluvio.jpg',
+                      userName: 'Charles Deluvio',
+                      feedTime: '32m ago',
+                      feedText:
+                          'I can\'t change the direction of the wind, but I can adjust my sails to always reach my destination.',
+                      feedImage: 'assets/images/Story/1.jpg',
+                      liked: true,
+                    ),
+                     makeFeed(
+                      userImage: 'assets/images/alireza-esmaeeli.jpg',
+                      userName: 'Alireza Esmaeeli',
+                      feedTime: '2h ago',
+                      feedText:
+                          'It is our attitude at the beginning of a difficult task which, more than anything else, will affect its successful outcome.',
+                      feedImage: 'assets/images/Story/4.jpg',
+                      liked: false,
                     ),
                   ],
                 ),
